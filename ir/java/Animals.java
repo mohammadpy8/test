@@ -11,8 +11,8 @@ public class Animals {
         dog.setSpeed(152.12);
     }
 
-    private int age;
-    private String name;
+    public int age;
+    public String name;
 
     public void setName(String name) {
         this.name = name;
@@ -24,6 +24,10 @@ public class Animals {
 
     public String getName() {
         return name;
+    }
+
+    public void show() {
+        System.out.println("student" + name);
     }
 
     public int getAge() {
@@ -54,7 +58,40 @@ class Dog extends Animals {
         super.setName(name);
     }
 
+    @Override
+    public void show() {
+        super.show();
+        System.out.println("stue" + speed);
+    }
+
     public double getSpeed() {
         return speed;
+    }
+}
+
+class Country {
+    public static void main(String[] args) {
+
+    }
+
+    private String name;
+    private String city;
+
+    public Country(String city, String name) {
+        this.name = name;
+        this.city = city;
+    }
+}
+
+class City extends Country {
+    public static void main(String[] args) {
+
+    }
+
+    private long Id;
+
+    public City(String name, long id, String city) {
+        super(city, name);
+        this.Id = id;
     }
 }
