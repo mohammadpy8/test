@@ -123,3 +123,41 @@ class Children extends Parent{
     public void b(){this.f();}
     public void c(){super.f();}
 }
+class A {
+    public int a;
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public int getA() {
+        return a;
+    }
+}
+class B extends A {
+
+    public static void main(String[] args) {
+        new B ().f();
+    }
+    private int a;
+
+    @Override
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    @Override
+    public int getA() {
+        return a;
+    }
+
+    public void f() {
+        int a;
+        this.a = 5;
+        super.a = 6;
+        a = 4;
+        System.out.println(a);
+        System.out.println(this.a);
+        System.out.println(super.a);
+    }
+}
