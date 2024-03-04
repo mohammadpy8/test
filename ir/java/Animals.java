@@ -95,3 +95,31 @@ class City extends Country {
         this.Id = id;
     }
 }
+class Parent {
+    public static void main(String[] args) {
+        Parent parent = new Parent();
+        Children children = new Children();
+        parent.f();
+        children.f();
+    }
+    protected void f(){
+        System.out.println("f is a function");
+    }
+}
+class Children extends Parent{
+    public static void main(String[] args) {
+        Parent parent = new Parent();
+        Children children = new Children();
+        parent.f();
+        children.f();
+        children.a();
+        children.b();
+        children.c();
+    }
+    public void f() {
+        System.out.println("f is a child function");
+    }
+    public void a(){f();}
+    public void b(){this.f();}
+    public void c(){super.f();}
+}
