@@ -97,3 +97,29 @@ class SomeClass {
         this.name = name;
     }
 }
+
+class Color {
+    public static final Color BLACK = new Color();
+    public static final Color BLUE = new Color();
+    public static final Color GREEN = new Color();
+    public static final Color RED = new Color();
+    Color black = Color.BLACK;
+    Color blue = Color.BLUE;
+    Color red = Color.RED;
+    Color green = Color.GREEN;
+
+    private Color() {
+
+    }
+}
+
+class EnumModel {
+    enum Model {
+        BLACK, BLUE, GREEN, RED
+    }
+
+    Model black = Model.BLACK;
+    Model red = Model.RED;
+    Model green = Model.GREEN;
+    Model blue = Model.BLUE;
+}
