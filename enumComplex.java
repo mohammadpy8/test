@@ -51,3 +51,31 @@ class Question {
         return sum(value);
     }
 }
+
+enum Status {SENT, DELIVERED, PENDING}
+
+class SMS {
+    public static void main(String[] args) {
+        SMS sms = new SMS("hi", "12", "13");
+        sms.setStatus(Status.DELIVERED);
+        System.out.println(sms);
+    }
+
+    private Status status;
+    private final String msg;
+    private final String from, to;
+
+    public SMS(String msg, String from, String to) {
+        this.to = to;
+        this.from = from;
+        this.msg = msg;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public String toStirng() {
+        return String.format("%s=>%s:%s(%s)", from, to, msg, status);
+    }
+}
