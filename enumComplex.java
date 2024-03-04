@@ -79,3 +79,29 @@ class SMS {
         return String.format("%s=>%s:%s(%s)", from, to, msg, status);
     }
 }
+
+class Person {
+    public static void main(String[] args) {
+        Person person = new Person("a");
+        System.out.println(person.toString());
+    }
+
+    private final String name;
+    private Integer age = null;
+    private Double length = null;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public Person(String name, int age, double length) {
+        this.name = name;
+        this.age = age;
+        this.length = length;
+    }
+
+    public String toString() {
+        return name + "(" + age + ")";
+    }
+
+}
