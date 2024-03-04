@@ -91,6 +91,12 @@ class Rectangle extends Shape {
 }
 
 class Person {
+    public static void main(String[] args) {
+        Person p1 = new Person();
+        p1.setName("ali");
+        p1.setNantioalID(123456);
+        p1.show();
+    }
     private String name;
     private long nantioalID;
 
@@ -117,7 +123,11 @@ class Person {
 
 class Student extends Person {
     public static void main(String[] args) {
-
+        Student st = new Student();
+        st.getNantioalID();
+        st.setStudentID("1212");
+        st.setName("kk");
+        st.show();
     }
 
     private String studentID;
