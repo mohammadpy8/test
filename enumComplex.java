@@ -1,0 +1,53 @@
+import java.lang.*;
+
+public class enumComplex {
+    public static void main(String[] args) {
+        Shap sh = Shap.CIRCLE;
+        System.out.println(sh.getNumber());
+        sh = Shap.valueOf("CIRCLE");
+        System.out.println(sh.getNumber());
+        Shap[] array = Shap.values();
+        for (Shap s : array) {
+            System.out.println(s.name());
+        }
+    }
+
+    enum Shap {
+        RECTANGLE(1),
+        CIRCLE(2),
+        SQUARE(3);
+        private int number;
+
+        Shap(int i) {
+            number = i;
+        }
+
+        public int getNumber() {
+            return number;
+        }
+    }
+}
+
+class Question {
+    public static void main(String[] args) {
+        System.out.println(sum());
+        System.out.println(sum(1, 2));
+        Integer integer = Integer.valueOf(3);
+        System.out.println(sum(1, 2, integer));
+        System.out.println(sum("1", "2"));
+        System.out.println(sum("one", "two"));
+    }
+
+    static int sum(Integer... number) {
+        int s = 0;
+        for (Integer i : number) {
+            s += i;
+        }
+        return s;
+    }
+
+    static int sum(String s1, String s2) {
+        Integer[] value = {Integer.valueOf(s1), Integer.valueOf(s2)};
+        return sum(value);
+    }
+}

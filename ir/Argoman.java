@@ -114,12 +114,33 @@ class Color {
 }
 
 class EnumModel {
+    public static void main(String[] args) {
+        EnumModel showModel = new EnumModel();
+        System.out.println(showModel.show(Shape.CIRCLE, Model.RED));
+    }
+
     enum Model {
         BLACK, BLUE, GREEN, RED
+    }
+
+    enum Shape {
+        CIRCLE, RECTANGLE, PIRAMID
     }
 
     Model black = Model.BLACK;
     Model red = Model.RED;
     Model green = Model.GREEN;
     Model blue = Model.BLUE;
+    Shape circle = Shape.CIRCLE;
+
+    int show(Shape s, Model c) {
+        switch (s) {
+            case CIRCLE:
+                return 10;
+            case RECTANGLE:
+                return 20;
+            default:
+                return 100;
+        }
+    }
 }
