@@ -54,14 +54,31 @@ class Animalss extends Animals {
         System.out.println("talk is method abstract");
     }
 }
-abstract class Shap{
-    public static void main(String[] args) {
 
+abstract class Shap {
+    public static void main(String[] args) {
+        Shap shap = new Shap() {
+            @Override
+            public double getArea() {
+                return 150;
+            }
+
+            @Override
+            public double getPremeter() {
+                return 150;
+            }
+        };
+        shap.getArea();
+        shap.getPremeter();
     }
+
+
     public abstract double getArea();
+
     public abstract double getPremeter();
 }
-class Rectangle extends Shap{
+
+class Rectangle extends Shap {
     public static void main(String[] args) {
         Rectangle rec = new Rectangle();
         System.out.println(rec.getArea());
@@ -76,5 +93,43 @@ class Rectangle extends Shap{
     @Override
     public double getArea() {
         return 120;
+    }
+}
+
+class Triggle extends Shap {
+    public static void main(String[] args) {
+        Triggle tr = new Triggle();
+        tr.setLength(25);
+        tr.setWidth(80);
+        System.out.println(tr.getArea());
+        System.out.println(tr.getPremeter());
+    }
+
+    private double width, length;
+
+    public void setLength(double length) {
+        this.length = length;
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public double getLength() {
+        return length;
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    @Override
+    public double getPremeter() {
+        return 2 * (width + length);
+    }
+
+    @Override
+    public double getArea() {
+        return length * width;
     }
 }
