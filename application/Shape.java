@@ -4,25 +4,32 @@ public interface Shape {
     public static void main(String[] args) {
 
     }
+
     public double getArea();
 
     public double getPerimeter();
 }
+
 interface CanRun {
     public static void main(String[] args) {
 
     }
+
     void Run();
 }
-interface CanThink{
+
+interface CanThink {
     public static void main(String[] args) {
 
     }
+
     void think();
 }
+
 interface CanTalk extends CanThink {
     void talk();
 }
+
 interface Human extends CanRun, CanTalk {
     @Override
     void think();
@@ -54,13 +61,16 @@ class Rectangle implements Shape {
         return 150;
     }
 }
-class Trigger implements Shape{
+
+class Trigger implements Shape {
     public static void main(String[] args) {
 
     }
+
     private double width, length;
     private int color;
-    public Trigger(double width, double length, int color){
+
+    public Trigger(double width, double length, int color) {
         this.color = color;
         this.length = length;
         this.width = width;
@@ -90,5 +100,47 @@ class Trigger implements Shape{
     @Override
     public double getArea() {
         return 2 * (width + length);
+    }
+}
+
+interface CanFight {
+    void fight();
+}
+
+interface CanSwim {
+    void swim();
+}
+
+interface CanFly {
+    void fly();
+}
+
+class ActionCharacter {
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+}
+
+class Hero extends ActionCharacter implements CanFly, CanFight, CanSwim {
+    @Override
+    public void swim() {
+        System.out.println("swim");
+    }
+
+    @Override
+    public void fly() {
+        System.out.println("fly");
+    }
+
+    @Override
+    public void fight() {
+        System.out.println("fight");
+    }
+
+    @Override
+    public String getName() {
+        return super.getName();
     }
 }
