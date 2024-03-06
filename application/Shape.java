@@ -283,7 +283,7 @@ class NewOutClass {
 }
 
 abstract class Protocol {
-    public abstract void f();
+    public abstract void func();
 }
 
 class NewOuterClass {
@@ -299,10 +299,53 @@ class NewOuterClass {
     public void outerMethod() {
         Protocol pro = new Protocol() {
             @Override
-            public void f() {
+            public void func() {
                 NewOuterClass.this.value = 10;
             }
         };
-        pro.f();
+        pro.func();
+    }
+}
+
+class Animals {
+    public static void main(String[] args) {
+
+    }
+}
+
+interface CanMove {
+    void move();
+}
+
+interface CanRunner extends CanMove {
+    @Override
+    void move();
+
+    void Runner();
+}
+
+interface CanFlying extends CanMove, CanRunner {
+    @Override
+    void move();
+
+    @Override
+    void Runner();
+}
+
+class AirPlane implements CanFlying {
+    public static void main(String[] args) {
+        AirPlane air = new AirPlane();
+        air.move();
+        air.Runner();
+    }
+
+    @Override
+    public void move() {
+        System.out.println("move");
+    }
+
+    @Override
+    public void Runner() {
+        System.out.println("Runner");
     }
 }
