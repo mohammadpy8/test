@@ -208,14 +208,57 @@ interface Person {
         return (int) (diff / (1000L * 60 * 60 * 24 * 365));
     }
 }
+
 class OuterClass {
     public static void main(String[] args) {
 
     }
-    public void f(){}
+
+    private int value = 2;
+
+    public void f() {
+    }
+
     public class Inner {
         public static void main(String[] args) {
 
         }
+
+        public void innerMethod() {
+//            value = 5; or --> OuterClass.this.value=5
+            OuterClass.this.value = 5;
+        }
+    }
+
+    interface X {
+        void g();
+    }
+
+    enum Y {A, B}
+}
+
+class OutClass {
+    public static void main(String[] args) {
+        OutClass outer = new OutClass();
+        System.out.println(outer.values);
+        outer.outerMethod();
+        System.out.println(outer.values);
+    }
+
+    private int values;
+
+    public class InnerClass {
+        public static void main(String[] args) {
+
+        }
+
+        public void changeMethod() {
+            OutClass.this.values = 10;
+        }
+    }
+
+    public void outerMethod() {
+        InnerClass inner = new InnerClass();
+        inner.changeMethod();
     }
 }
