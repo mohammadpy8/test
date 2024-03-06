@@ -262,3 +262,47 @@ class OutClass {
         inner.changeMethod();
     }
 }
+
+class NewOutClass {
+    public static void main(String[] args) {
+        NewOutClass newClass = new NewOutClass();
+        NewOutClass.Inner inner = newClass.new Inner();
+        System.out.println(newClass.numbers);
+        System.out.println("----------");
+        inner.f();
+        System.out.println(newClass.numbers);
+    }
+
+    private int numbers = 2;
+
+    class Inner {
+        public void f() {
+            NewOutClass.this.numbers = 10;
+        }
+    }
+}
+
+abstract class Protocol {
+    public abstract void f();
+}
+
+class NewOuterClass {
+    public static void main(String[] args) {
+        NewOuterClass newOut = new NewOuterClass();
+        System.out.println(newOut.value);
+        newOut.outerMethod();
+        System.out.println(newOut.value);
+    }
+
+    private int value;
+
+    public void outerMethod() {
+        Protocol pro = new Protocol() {
+            @Override
+            public void f() {
+                NewOuterClass.this.value = 10;
+            }
+        };
+        pro.f();
+    }
+}
