@@ -8,6 +8,25 @@ public interface Shape {
 
     public double getPerimeter();
 }
+interface CanRun {
+    public static void main(String[] args) {
+
+    }
+    void Run();
+}
+interface CanThink{
+    public static void main(String[] args) {
+
+    }
+    void think();
+}
+interface CanTalk extends CanThink {
+    void talk();
+}
+interface Human extends CanRun, CanTalk {
+    @Override
+    void think();
+}
 
 class Rectangle implements Shape {
     public static void main(String[] args) {
