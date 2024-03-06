@@ -158,6 +158,8 @@ class NetNew extends Now {
         NetNew net = new NetNew();
         System.out.println(net.setNumbers(new int[]{10, 20}));
         System.out.println(net.getName());
+        System.out.println("========");
+        System.out.println(net.getClass());
     }
 
     public int setNumbers(int[] numbers) {
