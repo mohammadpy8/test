@@ -133,3 +133,41 @@ class Triggle extends Shap {
         return length * width;
     }
 }
+
+abstract class Now {
+    public static void main(String[] args) {
+
+    }
+
+    public abstract int getName();
+}
+
+class NetNew extends Now {
+    private int[] numbers;
+
+    public static void main(String[] args) {
+        NetNew net = new NetNew();
+        System.out.println(net.setNumbers(new int[]{10, 20}));
+        System.out.println(net.getName());
+    }
+
+    public int setNumbers(int[] numbers) {
+        this.numbers = numbers;
+        return 0;
+    }
+
+    private int def;
+
+    @Override
+    public int getName() {
+        for (int i = 0; i < numbers.length; i++) {
+            def += numbers[i];
+        }
+        System.out.println(def);
+        if (def > 20) {
+            return 10;
+        } else {
+            return 20;
+        }
+    }
+}
