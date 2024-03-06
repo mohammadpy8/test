@@ -124,6 +124,9 @@ class ActionCharacter {
 }
 
 class Hero extends ActionCharacter implements CanFly, CanFight, CanSwim {
+    public static void main(String[] args) {
+    }
+
     @Override
     public void swim() {
         System.out.println("swim");
@@ -144,3 +147,34 @@ class Hero extends ActionCharacter implements CanFly, CanFight, CanSwim {
         return super.getName();
     }
 }
+
+abstract class PaintObject {
+    public static void main(String[] args) {
+
+    }
+
+    public abstract int draw();
+
+    private int x, y;
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+}
+
+abstract class R1 implements Shape {}
+abstract class R2 implements Shape {}
+abstract class R3 extends PaintObject implements Shape{}
+abstract class R4 extends PaintObject implements Shape,CanFight{}
