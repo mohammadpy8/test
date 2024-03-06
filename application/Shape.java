@@ -1,5 +1,7 @@
 package application;
 
+import java.util.Date;
+
 public interface Shape {
     public static void main(String[] args) {
 
@@ -163,6 +165,7 @@ abstract class PaintObject {
 
     public int getY() {
         return y;
+
     }
 
     public void setX(int x) {
@@ -174,7 +177,45 @@ abstract class PaintObject {
     }
 }
 
-abstract class R1 implements Shape {}
-abstract class R2 implements Shape {}
-abstract class R3 extends PaintObject implements Shape{}
-abstract class R4 extends PaintObject implements Shape,CanFight{}
+abstract class R1 implements Shape {
+}
+
+abstract class R2 implements Shape {
+}
+
+abstract class R3 extends PaintObject implements Shape {
+}
+
+abstract class R4 extends PaintObject implements Shape, CanFight {
+}
+
+interface Person {
+    public static void main(String[] args) {
+        Person person = new Person() {
+            @Override
+            public Date getBirthday() {
+                return new Date();
+            }
+        };
+        Integer ageOfPerson = person.age();
+        System.out.println(ageOfPerson);
+    }
+
+    Date getBirthday();
+
+    default Integer age() {
+        long diff = new Date().getTime() - getBirthday().getTime();
+        return (int) (diff / (1000L * 60 * 60 * 24 * 365));
+    }
+}
+class OuterClass {
+    public static void main(String[] args) {
+
+    }
+    public void f(){}
+    public class Inner {
+        public static void main(String[] args) {
+
+        }
+    }
+}
