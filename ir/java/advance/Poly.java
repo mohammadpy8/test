@@ -136,15 +136,24 @@ class Triggle extends Shap {
 
 abstract class Now {
     public static void main(String[] args) {
-
+        Now newO = new Now() {
+            @Override
+            public int getName() {
+                return 0;
+            }
+        };
+        NetNew rec = new NetNew();
+        int news = rec.getName();
+        int summation = rec.setNumbers(new int[]{10,5});
+        System.out.println(news);
+        System.out.println(summation);
     }
 
     public abstract int getName();
 }
 
 class NetNew extends Now {
-    private int[] numbers;
-
+    public int[] numbers;
     public static void main(String[] args) {
         NetNew net = new NetNew();
         System.out.println(net.setNumbers(new int[]{10, 20}));
@@ -156,12 +165,12 @@ class NetNew extends Now {
         return 0;
     }
 
-    private int def;
+    public int def;
 
     @Override
     public int getName() {
-        for (int i = 0; i < numbers.length; i++) {
-            def += numbers[i];
+        for (int number : numbers) {
+            def += number;
         }
         System.out.println(def);
         if (def > 20) {
