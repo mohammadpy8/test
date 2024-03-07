@@ -88,18 +88,76 @@ class Test {
         return first / second;
     }
 }
+
 class StackTrace {
     public static void main(String[] args) {
-        try{
+        try {
             f();
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     private static void f() {
         g();
     }
+
     private static void g() {
         throw new NullPointerException();
+    }
+}
+
+class Example {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your age:");
+        int age = 0;
+        boolean validAge = false;
+        while (!validAge) {
+            try {
+                String str = scanner.next();
+                age = Integer.parseInt(str);
+                validAge = true;
+            } catch (Exception e) {
+                System.out.println("Enter a valid number:");
+            }
+        }
+        System.out.println("You are " + age + "years old");
+    }
+}
+
+class Text {
+    public static void main(String[] args) throws Exception {
+        f();
+        int gg = g(new int[]{10, 50, -90, -85}, new int[]{25, 80, -14});
+        int ggg = g(new int[]{4, 8, 90, 150, -60}, new int[]{25, 80, 15});
+        System.out.println(gg);
+        System.out.println(ggg);
+    }
+
+    private static void f() {
+        System.out.println("f");
+    }
+
+    private static int g(int[] x, int[] y) throws Exception {
+        int sum = 0;
+        for (int numberX : x) {
+            sum += numberX;
+        }
+        if (sum >= 60) {
+            for (int numberY : y) {
+                sum = +numberY;
+            }
+            return sum;
+        } else if (sum <= 60) {
+            for(int number : x) {
+                for(int numbers: y){
+                    sum = numbers + number;
+                }
+            }
+            return sum;
+        } else {
+            throw new Exception("nnn");
+        }
     }
 }
