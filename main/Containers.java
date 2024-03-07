@@ -33,3 +33,27 @@ class Student {
         System.out.println(name);
     }
 }
+
+class ListClass {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<String>();
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            String input = scanner.next();
+            if (input.equalsIgnoreCase("exit"))
+                break;
+            list.add(input);
+        }
+        if (list.isEmpty()) {
+            System.out.println("No String entered");
+        } else {
+            System.out.println(list.size());
+            if (list.contains("Ali"))
+                System.out.println("Ali founded");
+            for (String s : list) {
+                System.out.println(s);
+            }
+        }
+    }
+
+}
