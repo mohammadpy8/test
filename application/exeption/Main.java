@@ -1,5 +1,6 @@
 package application.exeption;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -159,5 +160,32 @@ class Text {
         } else {
             throw new Exception("nnn");
         }
+    }
+}
+class Program{
+    public static void main(String[] args) throws Exception {
+        Program program = new Program();
+        try{
+            int first = program.readInt();
+            int second = program.readInt();
+            int div = program.division(first, second);
+            System.out.println(div);
+        } catch (IOException | ArithmeticException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    private int readInt() throws IOException {
+        Scanner scanner = new Scanner(System.in);
+        String str = scanner.next();
+        if(str.matches("[\\d]+")){
+            return Integer.parseInt(str);
+        }
+        throw new IOException("bad input");
+    }
+    private int division(int first, int second) throws ArithmeticException {
+        if(second == 0) {
+            throw new ArithmeticException("OOPS");
+        }
+        return 2 * (first / second);
     }
 }
