@@ -208,13 +208,38 @@ class MultipleCatch {
         System.out.println("After exception");
     }
 }
+
 class BadIranianNationalID extends Exception {
-    public static void main(String[] args) throws Exception  {
+    public static void main(String[] args) throws Exception {
         String input = "123456789";
-        try{
+        try {
             throw new BadIranianNationalID();
         } catch (BadIranianNationalID e) {
             System.out.println("Bad ID");
         }
     }
+
+    static void Method(int n) throws Exception {
+        try {
+            switch (n) {
+                case 1:
+                    System.out.println("1st case");
+                    return;
+                case 3:
+                    System.out.println("3st case");
+                    throw new RuntimeException("3!");
+                case 4:
+                    System.out.println("4st case");
+                    throw new Exception("4!");
+                case 2:
+                    System.out.println("2nd case");
+            }
+        } catch (RuntimeException e) {
+            System.out.println("Runtime Error");
+            System.out.println(e.getMessage());
+        } finally {
+            System.out.println("try-block entered");
+        }
+    }
 }
+
