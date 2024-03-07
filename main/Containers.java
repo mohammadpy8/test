@@ -55,5 +55,11 @@ class ListClass {
             }
         }
     }
-
+    void AddToList() {
+        String[] strings = {"m", "a", "b"};
+        ArrayList<String> list = new ArrayList<String>();
+        for(String str : strings) {
+            list.add(str);
+        }
+    }
 }
