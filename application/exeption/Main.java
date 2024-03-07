@@ -243,3 +243,20 @@ class BadIranianNationalID extends Exception {
     }
 }
 
+class NestedTry {
+    public static void main(String[] args) throws Exception {
+        try {
+            int a = Integer.parseInt(args[0]);
+            try {
+                int b = Integer.parseInt(args[1]);
+                System.out.println(a / b);
+            } catch (ArithmeticException e1) {
+                System.out.println(e1.getMessage());
+            }
+        } catch (ArrayIndexOutOfBoundsException e2) {
+            System.out.println(e2.getMessage());
+        }
+    }
+}
+
+
