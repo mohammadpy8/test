@@ -151,8 +151,8 @@ class Text {
             }
             return sum;
         } else if (sum <= 60) {
-            for(int number : x) {
-                for(int numbers: y){
+            for (int number : x) {
+                for (int numbers : y) {
                     sum = numbers + number;
                 }
             }
@@ -162,10 +162,11 @@ class Text {
         }
     }
 }
-class Program{
+
+class Program {
     public static void main(String[] args) throws Exception {
         Program program = new Program();
-        try{
+        try {
             int first = program.readInt();
             int second = program.readInt();
             int div = program.division(first, second);
@@ -174,18 +175,46 @@ class Program{
             System.out.println(e.getMessage());
         }
     }
+
     private int readInt() throws IOException {
         Scanner scanner = new Scanner(System.in);
         String str = scanner.next();
-        if(str.matches("[\\d]+")){
+        if (str.matches("[\\d]+")) {
             return Integer.parseInt(str);
         }
         throw new IOException("bad input");
     }
+
     private int division(int first, int second) throws ArithmeticException {
-        if(second == 0) {
+        if (second == 0) {
             throw new ArithmeticException("OOPS");
         }
         return 2 * (first / second);
+    }
+}
+
+class MultipleCatch {
+    public static void main(String[] args) throws Exception {
+        try {
+            int den = Integer.parseInt(args[0]);
+            System.out.println(3 / den);
+        } catch (ArithmeticException e1) {
+            System.out.println(e1.getMessage());
+            System.out.println("Divisor is zero");
+        } catch (ArrayIndexOutOfBoundsException e2) {
+            System.out.println(e2.getMessage());
+            System.out.println("Missing arguments");
+        }
+        System.out.println("After exception");
+    }
+}
+class BadIranianNationalID extends Exception {
+    public static void main(String[] args) throws Exception  {
+        String input = "123456789";
+        try{
+            throw new BadIranianNationalID();
+        } catch (BadIranianNationalID e) {
+            System.out.println("Bad ID");
+        }
     }
 }
