@@ -259,4 +259,41 @@ class NestedTry {
     }
 }
 
+class MyException extends Exception {
+    void throwMyException() throws Exception {
+        throw new MyException();
+    }
+
+    public static void main(String[] args) {
+        MyException exc = new MyException();
+        System.out.println(exc.myMethod(1));
+        System.out.println(exc.myMethod(2));
+        System.out.println(exc.myMethod(3));
+        System.out.println(exc.myMethod(4));
+    }
+
+    int myMethod(int numbers) {
+        try {
+            switch (numbers) {
+                case 1:
+                    System.out.println("One");
+                    return 1;
+                case 2:
+                    System.out.println("Two");
+                    throwMyException();
+                case 3:
+                    System.out.println("Three");
+            }
+            return 4;
+        } catch (Exception e) {
+            System.out.println("Catch");
+            System.out.println(e.getMessage());
+            return 5;
+        } finally {
+            System.out.println("Finally");
+            return 6;
+        }
+    }
+}
+
 
