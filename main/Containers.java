@@ -128,3 +128,21 @@ class CollectionList {
             System.out.println(i);
     }
 }
+
+class Students {
+    public static void main(String[] args) {
+        List<Students> list = new ArrayList<Students>();
+        list.add(new Students("alireza"));
+        System.out.println(list.contains(new Students("alireza")));
+    }
+
+    private String name;
+
+    public Students(String name) {
+        this.name = name;
+    }
+    public boolean equals(Object obj){
+        Students other = (Students) obj;
+        return name.equals(other.name);
+    }
+}
