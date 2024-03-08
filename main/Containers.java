@@ -216,14 +216,46 @@ class MapClass {
         Double grade = map.get(new Students("a"));
         System.out.println("grade of =" + grade);
         System.out.println(map.size());
-        for(Students students : map.keySet()){
+        for (Students students : map.keySet()) {
             System.out.println(students.toString());
         }
         Double totalSum = 0.0;
-        for(Double avg : map.values()){
+        for (Double avg : map.values()) {
             totalSum += avg;
         }
         System.out.println(totalSum);
         System.out.println("Avg= " + (totalSum / map.size()));
+    }
+}
+
+class Iterators {
+    public static void main(String[] args) {
+        List<Integer> list = null;
+        for (Integer i : list) {
+            System.out.println(i);
+        }
+        Iterator<Integer> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            Integer i = iterator.next();
+            System.out.println(i);
+        }
+    }
+
+    void Modifier() {
+        List<Integer> list = new ArrayList<Integer>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        for (Integer integer : list)
+            if (integer.equals(1))
+                list.remove(integer);
+        List<String> newList = new ArrayList<String>();
+        newList.add("A");
+        newList.add("B");
+        newList.add("C");
+        for (String s : newList)
+            if (s.equals("A"))
+                newList.remove(s);
+
     }
 }
