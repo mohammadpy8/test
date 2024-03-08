@@ -347,3 +347,37 @@ class UseArray {
         System.out.println(list);
     }
 }
+
+class Car implements Comparable<Car> {
+    public static void main(String[] args) {
+        java.util.Comparator<Car> comp = new java.util.Comparator<Car>() {
+            @Override
+            public int compare(Car o1, Car o2) {
+                return o1.speed.compareTo(o2.speed);
+            }
+        };
+        Set<Car> car1 = new TreeSet<Car>();
+        Collections.addAll(car1, new Car("Pride", 20, 200));
+        Set<Car> car2 = new TreeSet<Car>();
+        Collections.addAll(car2, new Car("pegue", 12, 800));
+        for (Car car : car1) {
+            System.out.println(car.name);
+        }
+        for (Car car : car2) {
+            System.out.println(car.name);
+        }
+    }
+
+    String name;
+    Integer price, speed;
+
+    public Car(String name, Integer price, Integer speed) {
+        this.name = name;
+        this.price = price;
+        this.speed = speed;
+    }
+
+    public int compareTo(Car o) {
+        return this.price.compareTo(o.price);
+    }
+}
