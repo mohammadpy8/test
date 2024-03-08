@@ -134,6 +134,10 @@ class Students {
         List<Students> list = new ArrayList<Students>();
         list.add(new Students("alireza"));
         System.out.println(list.contains(new Students("alireza")));
+        System.out.println("------------");
+        Set<Students> set = new HashSet<Students>();
+        set.add(new Students("m"));
+        System.out.println(set.contains(new Students("m")));
     }
 
     private String name;
@@ -141,8 +145,51 @@ class Students {
     public Students(String name) {
         this.name = name;
     }
-    public boolean equals(Object obj){
+
+    public boolean equals(Object obj) {
         Students other = (Students) obj;
         return name.equals(other.name);
+    }
+
+    public int hashCode() {
+        return 31 + ((name == null) ? 0 : name.hashCode());
+    }
+}
+
+class Rectangle {
+    public static void main(String[] args) {
+
+    }
+
+    private int length, width;
+
+    public Rectangle(int length, int width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rectangle rectangle = (Rectangle) o;
+        return length == rectangle.length && width == rectangle.width;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(length, width);
+    }
+}
+
+class RectangleShape {
+    public static void main(String[] args) {
+        Rectangle r1 = new Rectangle(10, 20);
+        Rectangle r2 = new Rectangle(10, 20);
+        System.out.println(r1.equals(r2));
+        List<Rectangle> list = new ArrayList<Rectangle>();
+        list.add(r1);
+        System.out.println("--------");
+        System.out.println(list.contains(r2));
     }
 }
