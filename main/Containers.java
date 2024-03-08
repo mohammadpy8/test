@@ -1,6 +1,7 @@
 package main;
 
 import java.util.*;
+import java.lang.*;
 
 public class Containers {
     public static void main(String[] args) {
@@ -257,5 +258,37 @@ class Iterators {
             if (s.equals("A"))
                 newList.remove(s);
 
+    }
+}
+
+interface Comparator<T> {
+    int compare(T o1, T o2);
+}
+
+class Teacher implements Comparable<Teacher> {
+    int age;
+    double grade;
+
+    public int compareTo(Teacher s) {
+        return (this.grade < s.grade ? -1 : (this.grade == s.grade ? 0 : +1));
+    }
+
+    public Teacher(int age, int grade) {
+        this.age = age;
+        this.grade = grade;
+    }
+}
+
+class StudentComparator implements java.util.Comparator<Teacher> {
+    public static void main(String[] args) {
+        StudentComparator comparator = new StudentComparator();
+        Teacher s1 = new Teacher(21, 18);
+        Teacher s2 = new Teacher(20, 17);
+        System.out.println(s1.compareTo(s2));
+        System.out.println(comparator.compare(s1, s2));
+    }
+
+    public int compare(Teacher s1, Teacher s2) {
+        return s1.age < s2.age ? -1 : (s1.age == s2.age ? 0 : +1);
     }
 }
