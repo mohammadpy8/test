@@ -55,11 +55,55 @@ class ListClass {
             }
         }
     }
+
     void AddToList() {
         String[] strings = {"m", "a", "b"};
         ArrayList<String> list = new ArrayList<String>();
-        for(String str : strings) {
+        for (String str : strings) {
             list.add(str);
+        }
+    }
+}
+
+class Linked {
+    public static void main(String[] args) {
+        LinkedList<Double> grades = new LinkedList<Double>();
+        grades.add(18.5);
+        grades.add(20.5);
+        for (Double d : grades) {
+            System.out.println(d);
+        }
+        List<String> list = new LinkedList<String>();
+        list.add("Ali");
+        list.add("Taghi");
+        System.out.println(list.get(1));
+    }
+}
+
+class RandomNumbers {
+    public static void main(String[] args) {
+        List<Double> list = new LinkedList<Double>();
+        Random random = new Random();
+        Object temp;
+        for (int i = 0; i < 10000; i++) {
+            temp = list.get(random.nextInt(list.size()));
+        }
+    }
+}
+
+class SetClasses {
+    public static void main(String[] args) {
+        HashSet<String> set = new HashSet<String>();
+        set.add("ali");
+        set.add("mohammad");
+        Set<String> newSet = new HashSet<String>();
+        newSet.add("all");
+        newSet.add("aaaa");
+        newSet.add("mmm");
+        newSet.add("l");
+        System.out.println(newSet.size());
+        for (String str : newSet) {
+            System.out.println(str);
         }
     }
 }
