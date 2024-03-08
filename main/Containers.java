@@ -193,3 +193,37 @@ class RectangleShape {
         System.out.println(list.contains(r2));
     }
 }
+
+class MapClass {
+    public static void main(String[] args) {
+        Map<Integer, String> map = new HashMap<Integer, String>();
+        map.put(10, "alireza");
+        map.put(20, "mohammad");
+        map.put(30, "ahmad");
+        String name = map.get(10);
+        System.out.println(name);
+        System.out.println("-----------");
+        MapClass e = new MapClass();
+        e.E();
+    }
+
+    void E() {
+        Map<Students, Double> map = new HashMap<Students, Double>();
+        map.put(new Students("m"), 15.5);
+        map.put(new Students("f"), 10.0);
+        map.put(new Students("d"), 1.5);
+        map.put(new Students("a"), 24.2);
+        Double grade = map.get(new Students("a"));
+        System.out.println("grade of =" + grade);
+        System.out.println(map.size());
+        for(Students students : map.keySet()){
+            System.out.println(students.toString());
+        }
+        Double totalSum = 0.0;
+        for(Double avg : map.values()){
+            totalSum += avg;
+        }
+        System.out.println(totalSum);
+        System.out.println("Avg= " + (totalSum / map.size()));
+    }
+}
