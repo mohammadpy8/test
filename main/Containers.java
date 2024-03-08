@@ -292,3 +292,58 @@ class StudentComparator implements java.util.Comparator<Teacher> {
         return s1.age < s2.age ? -1 : (s1.age == s2.age ? 0 : +1);
     }
 }
+
+class UseArray {
+    public static void main(String[] args) {
+        Random random = new Random();
+        Long[] array = new Long[100];
+        Arrays.fill(array, 5L);
+        Long[] copy = Arrays.copyOf(array, 200);
+        for (int i = 100; i < copy.length; i++) {
+            copy[i] = random.nextLong() % 10;
+        }
+        List<Integer> asList = Arrays.asList(1, 2, 3, 4);
+        List<Long> asList2 = Arrays.asList(array);
+        Arrays.sort(array);
+        int index = Arrays.binarySearch(array, 7L);
+        System.out.println(index);
+        System.out.println(asList2);
+        System.out.println(asList);
+        UseArray use = new UseArray();
+        use.ArrayUseful();
+        use.Coll();
+    }
+
+    public void ArrayUseful() {
+        int[] a1 = {1, 2, 3, 4};
+        int[] a2 = {1, 2, 3, 4};
+        System.out.println(a1 == a2);  ///false result
+        System.out.println(a1.equals(a2)); ///false result
+        System.out.println(Arrays.equals(a1, a2)); ///true result
+    }
+
+    public void Coll() {
+        List<String> list = new ArrayList<String>();
+        Collections.addAll(list, "A", "B", "Car");
+        int freq = Collections.frequency(list, "A");
+        System.out.println(freq);
+        System.out.println(list);
+        Collections.sort(list);
+        System.out.println(list);
+        java.util.Comparator<String> comp = new java.util.Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return Integer.compare(o1.length(), o2.length());
+            }
+        };
+        list.sort(comp);
+        System.out.println(list);
+        Collections.reverse(list);
+        String min = Collections.min(list);
+        String max = Collections.max(list);
+        String compare = Collections.max(list, comp);
+        Collections.shuffle(list);
+        Collections.fill(list, "B");
+        System.out.println(list);
+    }
+}
