@@ -107,3 +107,24 @@ class SetClasses {
         }
     }
 }
+
+class CollectionList {
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<Integer>();
+        list.add(5);
+        list.add(20);
+        list.add(30);
+        list.add(10);
+        Object[] array = list.toArray();
+        for (Object object : array) {
+            Integer i = (Integer) object;
+            System.out.println(i);
+        }
+        Integer[] array2 = list.toArray(new Integer[list.size()]);
+        for (Integer i : array2)
+            System.out.println(i);
+        Integer[] array3 = list.toArray(new Integer[0]);
+        for (Integer i : array3)
+            System.out.println(i);
+    }
+}
