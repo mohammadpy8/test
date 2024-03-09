@@ -92,10 +92,46 @@ class Node<E> {
 
 class NumbersQueue<T extends Number> {
     public static void main(String[] args) {
-    NumbersQueue<Integer> n;
-    NumbersQueue<Double> d;
-    NumbersQueue<Long> l;
-    NumbersQueue<Byte> b;
+        NumbersQueue<Integer> n;
+        NumbersQueue<Double> d;
+        NumbersQueue<Long> l;
+        NumbersQueue<Byte> b;
+        NumbersQueue<Integer> numbers = new NumbersQueue<Integer>(); /////version old
+        NumbersQueue<Float> f = new NumbersQueue<>(); //// new version
+        numbers.enqueue(12);
+        Map<String, List<Number>> map = new HashMap<>();
+    }
+
+    public void enqueue(T o) {
+        System.out.println(o);
+    }
+
+    public T dequeue() {
+        System.out.println("T generics");
+    }
+}
+
+class GenericsClass {
+    public static void main(String[] args) {
+        GenericsClass gn = new GenericsClass();
+        gn.f(10, 20);
+    }
+
+    public <E extends Number> void f(E p1, E p2) {
+        System.out.println(p1);
+        System.out.println(p2);
+    }
+}
+
+class NotGenerics {
+    public <T> T chooseRandom(T p1, T p2) {
+        if (new Random().nextFloat() > 0.5)
+            return p1;
+        return p2;
+    }
+
+    public static <E extends Comparable> E max(E p1, E p2) {
+        return p1.compareTo(p2) > 0 ? p1 : p2;
     }
 }
 
