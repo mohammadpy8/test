@@ -84,3 +84,26 @@ class CriticalSection {
 
     }
 }
+
+class Interrupting extends Thread {
+    public static void main(String[] args) throws InterruptedException {
+        Interrupting t = new Interrupting();
+        t.start();
+        try {
+            Thread.sleep(1000);
+            t.interrupt();
+        } catch (InterruptedException e1) {
+            System.out.println(e1.getMessage());
+        }
+    }
+
+    @Override
+    public synchronized void run() {
+        try {
+            wait(100);
+            System.out.println("After wait");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
