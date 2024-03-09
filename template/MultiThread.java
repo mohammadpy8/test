@@ -36,3 +36,35 @@ class MyRunnable implements Runnable {
         System.out.println("b");
     }
 }
+
+class PrintThread implements Runnable {
+    public static void main(String[] args) {
+    }
+
+    @Override
+    public void run() {
+        for (int i = 0; i < 100; i++) {
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            System.out.println(i);
+        }
+        Thread currentThread = Thread.currentThread();
+        System.out.println(currentThread.getId());
+        System.out.println(currentThread.getName());
+    }
+}
+
+class ThreadP {
+    public static void main(String[] args) {
+        new Thread(new PrintThread()).start();
+        for (char c = 'A'; c <= 'Z'; c++) {
+            System.out.println(c);
+        }
+        Thread currentThread = Thread.currentThread();
+        System.out.println("main" + currentThread.getId());
+        System.out.println("main" + currentThread.getName());
+    }
+}
