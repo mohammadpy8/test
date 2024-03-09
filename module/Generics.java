@@ -124,6 +124,12 @@ class GenericsClass {
 }
 
 class NotGenerics {
+    public static void main(String[] args) {
+        String s = new NotGenerics().chooseRandom("A", "B");
+        Integer num = new NotGenerics().chooseRandom(10, 300);
+        num = NotGenerics.max(10, 22);
+        s = NotGenerics.max("A", "B");
+    }
     public <T> T chooseRandom(T p1, T p2) {
         if (new Random().nextFloat() > 0.5)
             return p1;
@@ -133,5 +139,24 @@ class NotGenerics {
     public static <E extends Comparable> E max(E p1, E p2) {
         return p1.compareTo(p2) > 0 ? p1 : p2;
     }
+}
+class Box<T extends Number> {
+    private T value;
+
+    public void setValue(T value) {
+        this.value = value;
+    }
+
+    public T getValue() {
+        return value;
+    }
+    public Box (T value){
+        this.value = value;
+    }
+
+    public static void main(String[] args) {
+        Box<Integer> box = new Box<>(10);
+    }
+
 }
 
