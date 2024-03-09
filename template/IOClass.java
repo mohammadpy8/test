@@ -1,7 +1,10 @@
 package template;
 
 import java.io.*;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.*;
+
 
 public class IOClass {
     public static void main(String[] args) throws IOException {
@@ -28,8 +31,22 @@ class Stream extends InputStream {
             }
         }
     }
+
     @Override
     public int read() throws IOException {
         return 0;
+    }
+}
+
+class SocketStream {
+    public static void main(String[] args) throws Exception {
+        try {
+            Socket socket = new Socket("google.com", 80);
+            OutputStream out = socket.getOutputStream();
+            InputStream input = socket.getInputStream();
+        } catch (Exception e1) {
+            System.out.println(e1.getMessage());
+        }
+
     }
 }
