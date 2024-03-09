@@ -1,6 +1,6 @@
 package module;
 
-import java.util.EmptyStackException;
+import java.util.*;
 
 public class Generics<E> {
     public static void main(String[] args) throws Exception {
@@ -62,13 +62,40 @@ class Pair<T1, T2> {
         this.first = first;
         this.second = second;
     }
+
     public void PairTest() {
         Pair<String, String> p2;
-        p2 = new Pair<String , String>("ali", "mohammad");
+        p2 = new Pair<String, String>("ali", "mohammad");
         String fistName = p2.getFirst();
         System.out.println(fistName);
         String lastName = p2.getSecond();
         System.out.println(lastName);
+    }
+}
+
+class Node<E> {
+    public static void main(String[] args) {
+        Node<String> last = new Node<String>("Ali", null);
+        Node<String> first = new Node<String>("Mohammad", last);
+        System.out.println(first.item);
+        System.out.println(last.next);
+    }
+
+    E item;
+    Node<E> next;
+
+    Node(E element, Node<E> next) {
+        this.item = element;
+        this.next = next;
+    }
+}
+
+class NumbersQueue<T extends Number> {
+    public static void main(String[] args) {
+    NumbersQueue<Integer> n;
+    NumbersQueue<Double> d;
+    NumbersQueue<Long> l;
+    NumbersQueue<Byte> b;
     }
 }
 
