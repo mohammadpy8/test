@@ -108,6 +108,7 @@ class NumbersQueue<T extends Number> {
 
     public T dequeue() {
         System.out.println("T generics");
+        return null;
     }
 }
 
@@ -157,6 +158,5 @@ class Box<T extends Number> {
     public static void main(String[] args) {
         Box<Integer> box = new Box<>(10);
     }
-
 }
 
