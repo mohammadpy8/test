@@ -50,3 +50,14 @@ class SocketStream {
 
     }
 }
+
+class User implements Serializable {
+    private String username;
+    private transient String password;
+}
+
+class Students implements Serializable {
+    private String name;
+    private double[] grades;
+    private transient double average = 19.55;
+}
