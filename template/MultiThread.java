@@ -68,3 +68,19 @@ class ThreadP {
         System.out.println("main" + currentThread.getName());
     }
 }
+
+class CriticalSection {
+    private float balance;
+
+    public synchronized void deposit(float amount) {
+        balance += amount;
+    }
+
+    public synchronized void withdraw(float amount) {
+        balance -= amount;
+    }
+
+    public static void main(String[] args) {
+
+    }
+}
