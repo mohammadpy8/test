@@ -103,7 +103,38 @@ class Interrupting extends Thread {
             wait(100);
             System.out.println("After wait");
         } catch (InterruptedException e) {
+            System.out.println("Interrupted");
             throw new RuntimeException(e);
         }
+        System.out.println("Resume");
+    }
+}
+
+class Scan extends Thread {
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println("Main start");
+        Scan scan = new Scan();
+        Object obj = scan.obj = new Object();
+        scan.start();
+        synchronized (obj) {
+            obj.wait();
+            System.out.println("Main other jobs");
+        }
+    }
+
+    public Object obj;
+
+    @Override
+    public void run() {
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e1) {
+            System.out.println(e1.getMessage());
+        }
+        System.out.println("scan");
+        synchronized (obj) {
+            obj.notify();
+        }
+        System.out.println("Scan other jobs");
     }
 }
