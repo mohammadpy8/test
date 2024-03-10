@@ -1,12 +1,14 @@
 package custom;
 
-import java.util.Date;
+import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Main {
     public static void main(String[] args) {
 
     }
 }
+
 @FunctionalInterface
 interface Person<E extends Number> {
     Date getBirthday();
@@ -22,6 +24,7 @@ class Student implements Person {
 
     @Override
     public Date getBirthday() {
+
         return birthDate;
     }
 
@@ -33,3 +36,25 @@ class Student implements Person {
         return (int) (currentYear - birthYear);
     }
 }
+
+interface Comparator<T extends Number> {
+    int compare(T o1, T o2);
+
+    public static void main(String[] args) {
+        java.util.Comparator<Person> comp = (a, b) -> a.age().compareTo(b.age());
+        System.out.println(comp);
+        List<Person> poeple = Arrays.asList(
+                new Student(),
+                new Student()
+        );
+        Collections.sort(poeple, new java.util.Comparator<Person>() {
+            @Override
+            public int compare(Person o1, Person o2) {
+                return o1.age().compareTo(o2.age());
+            }
+        });
+        Collections.sort(poeple, (a, b) -> a.age().compareTo(b.age()));
+    }
+}
+
+
