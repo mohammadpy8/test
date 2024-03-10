@@ -2,6 +2,7 @@ package custom;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class Main {
@@ -86,6 +87,18 @@ class Pre {
         b = notEmpty.negate().test(st);
         Predicate<String> notNull = Objects::nonNull;
         b = notNull.and(notEmpty).test(st);
+        Predicate<String> isEmpty = String::isEmpty;
+        Predicate<String> isNotEmpty = isEmpty.negate();
+        System.out.println(isNotEmpty.test(st));
+    }
+}
+class FunctionEx {
+    private static Function<String, String> backToString;
+
+    public static void main(String[] args) {
+        Function<String, Integer> toInteger = Integer::valueOf;
+        Function<String, String> backToString = toInteger.andThen(String::valueOf);
+        backToString.apply("123");
     }
 }
 
