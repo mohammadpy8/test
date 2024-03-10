@@ -2,6 +2,7 @@ package custom;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Predicate;
 
 public class Main {
     public static void main(String[] args) {
@@ -54,6 +55,37 @@ interface Comparator<T extends Number> {
             }
         });
         Collections.sort(poeple, (a, b) -> a.age().compareTo(b.age()));
+    }
+}
+
+class Str {
+    Character startWith(String s) {
+        return s.charAt(0);
+    }
+}
+
+@FunctionalInterface
+interface Converter<F, T> {
+    T convert(F from);
+
+    public static void main(String[] args) {
+        Str str = new Str();
+        Converter<String, Character> conv = str::startWith; //// method reference
+        Character converted = conv.convert("Java");
+        Converter<String, Integer> converter = Integer::valueOf;
+    }
+}
+
+class Pre {
+    public static String st = "ok";
+    public static boolean b;
+
+    public static void main(String[] args) {
+        Predicate<String> notEmpty = (x) -> !x.isEmpty();
+        b = notEmpty.test(st);
+        b = notEmpty.negate().test(st);
+        Predicate<String> notNull = Objects::nonNull;
+        b = notNull.and(notEmpty).test(st);
     }
 }
 
