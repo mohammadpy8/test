@@ -2,8 +2,7 @@ package custom;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.function.Function;
-import java.util.function.Predicate;
+import java.util.function.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -92,6 +91,7 @@ class Pre {
         System.out.println(isNotEmpty.test(st));
     }
 }
+
 class FunctionEx {
     private static Function<String, String> backToString;
 
@@ -99,7 +99,26 @@ class FunctionEx {
         Function<String, Integer> toInteger = Integer::valueOf;
         Function<String, String> backToString = toInteger.andThen(String::valueOf);
         backToString.apply("123");
+        Supplier<Person<Integer>> personSupplier = Person::new;
+        personSupplier.get();
+        Consumer<Person<Integer>> greeter = (p) -> System.out.println(p.getBirthday().getTime());
+        greeter.accept(new Person<Integer>() {
+            @Override
+            public Date getBirthday() {
+                return null;
+            }
+        });
     }
 }
+
+class ConsumerFunc {
+    public static void main(String[] args) {
+        Map<Integer, String> map = null;
+        BiConsumer<Integer, String> biConsumer = (key, value) -> System.out.println("Key:" + key + "Value:" + value);
+        map.forEach(biConsumer);
+    }
+}
+
+
 
 
