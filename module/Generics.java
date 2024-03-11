@@ -112,13 +112,13 @@ class NumbersQueue<T extends Number> {
     }
 }
 
-class GenericsClass {
+class GenericsClass<T> {
     public static void main(String[] args) {
         GenericsClass gn = new GenericsClass();
         gn.f(10, 20);
     }
 
-    public <E extends Number> void f(E p1, E p2) {
+    public <E extends T> void f(E p1, E p2) {
         System.out.println(p1);
         System.out.println(p2);
     }

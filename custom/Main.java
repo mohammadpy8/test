@@ -1,9 +1,15 @@
 package custom;
 
+import ir.java.advance.File;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class Main {
@@ -263,7 +269,7 @@ class Employ {
         int SizeOfSet = set.size();
         System.out.println(SizeOfSet);
         Optional<Integer> sum = set.stream().parallel().map(String::length).reduce(Integer::sum);
-         sum.ifPresent(System.out::println);
+        sum.ifPresent(System.out::println);
         Optional<Integer> sumationLog = set.stream().parallel().filter(s -> s.startsWith("log")).map(String::length).reduce(Integer::sum);
         sumationLog.ifPresent(System.out::println);
         Optional<Integer> sum2  =set.stream().parallel().filter(s -> s.startsWith("log")).sorted().map(String::length).reduce(Integer::sum);
@@ -272,8 +278,18 @@ class Employ {
         sum3.ifPresent(System.out::println);
     }
 }
-
-
-
-
-
+class LongStreamAndIntStream {
+    public static void main(String[] args) throws Exception {
+        IntStream oneTo19 = IntStream.range(1, 20);
+        IntStream oneTo20 = IntStream.rangeClosed(1, 20);
+        oneTo19.forEach(System.out::println);
+        oneTo20.forEach(System.out::println);
+        Stream.iterate(0, x -> x + 2)
+                .limit(10)
+                .forEach(System.out::println);
+        Stream<String> stream = Stream.of("A", "B", "C");
+        String [] array  = {"Ali", "Mohammad"};
+        Arrays.stream(array);
+        Stream<String> lines = Files.lines(Paths.get(""));
+    }
+}
