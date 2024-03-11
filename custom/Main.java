@@ -3,6 +3,7 @@ package custom;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.*;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -177,6 +178,26 @@ class Apple {
 
     public Apple(int size) {
         this.size = size;
+    }
+}
+
+class Car {
+    public String name;
+    public int price;
+
+    public Car(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public static void main(String[] args) {
+        List<Car> list = Arrays.asList(
+                new Car("p", 100),
+                new Car("n", 120)
+        );
+        Stream<Car> newList = list.stream().filter((car) -> "p".equals(car.name)).sorted((a, b) -> a.price - b.price);
+        System.out.println(newList);
+
     }
 }
 
