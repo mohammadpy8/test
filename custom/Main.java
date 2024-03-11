@@ -332,3 +332,12 @@ class Accumulator {
         return accumulator.total;
     }
 }
+class Accumulation {
+    public static void main(String[] args) {
+        IntStream.rangeClosed(1, 4_000)
+                .filter(a -> a % 1000 == 0)
+                .parallel()
+                .sequential()
+                .forEach(System.err::println);
+    }
+}
