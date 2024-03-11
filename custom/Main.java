@@ -200,15 +200,41 @@ class Car {
 
     }
 }
+
 class OptionalClasses {
     public static Optional<String> opt = Optional.of("salam!");
     boolean b = opt.isPresent();
     String s = opt.get();
     String t = opt.orElse("bye!");
+
     public static void main(String[] args) {
-
         opt.ifPresent((s) -> System.out.println(s.charAt(2)));
+    }
+}
 
+class Cars {
+    int price;
+    String color;
+
+    public Cars(String color, int price) {
+        this.color = color;
+        this.price = price;
+    }
+
+    public String toString() {
+        return "Car[color=" + color + ", price=" + price + "]";
+    }
+
+    public static void main(String[] args) {
+        List<Cars> list = Arrays.asList(
+                new Cars("b", 100),
+                new Cars("c", 200),
+                new Cars("a", 300),
+                new Cars("s", 400),
+                new Cars("d", 500)
+        );
+        list.stream().forEach(System.out::println);
+        list.stream().forEach((car) -> System.out.println(car.color));
     }
 }
 
