@@ -123,7 +123,31 @@ class ConsumerFunc {
 
 class Exercise {
     public static void main(String[] args) {
+        List<Apple> apples = Arrays.asList(
+                new Apple(1),
+                new Apple(2),
+                new Apple(2),
+                new Apple(4),
+                new Apple(5)
+        );
+        List<Apple> filtered = filter(apples, (a) -> a.size > 2);
 
+        Collections.sort(apples, new java.util.Comparator<Apple>() {
+            @Override
+            public int compare(Apple o1, Apple o2) {
+                return o1.size - o2.size;
+            }
+        });
+        apples.sort((a1, a2) -> a1.size - a2.size); //// best way for sort
+    }
+
+    static List<Apple> filter(List<Apple> list, Predicate<Apple> condition) {
+        List<Apple> result = new ArrayList<>();
+        for (Apple apple : list) {
+            if (condition.test(apple))
+                result.add(apple);
+        }
+        return result;
     }
 }
 
