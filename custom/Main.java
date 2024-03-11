@@ -235,6 +235,11 @@ class Cars {
         );
         list.stream().forEach(System.out::println);
         list.stream().forEach((car) -> System.out.println(car.color));
+        list.stream().forEach((car) -> System.out.println(car.price));
+        System.out.println("-----");
+        Stream<Cars> myCar = list.stream().filter((car -> car.price == 200));
+        list.stream().map(car -> car.color).filter(color -> color.startsWith("b")).forEach(System.out::println);
+        Optional<Integer> sumOfPrice = list.stream().map(car -> car.price).reduce(Integer::sum);
     }
 }
 
