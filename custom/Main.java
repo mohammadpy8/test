@@ -195,8 +195,19 @@ class Car {
                 new Car("p", 100),
                 new Car("n", 120)
         );
-        Stream<Car> newList = list.stream().filter((car) -> "p".equals(car.name)).sorted((a, b) -> a.price - b.price);
+        Stream<Car> newList = list.stream().filter((car) -> "p".equals(car.name)).sorted((a, b) -> a.price - b.price).limit(1);
         System.out.println(newList);
+
+    }
+}
+class OptionalClasses {
+    public static Optional<String> opt = Optional.of("salam!");
+    boolean b = opt.isPresent();
+    String s = opt.get();
+    String t = opt.orElse("bye!");
+    public static void main(String[] args) {
+
+        opt.ifPresent((s) -> System.out.println(s.charAt(2)));
 
     }
 }
