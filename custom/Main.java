@@ -99,8 +99,8 @@ class FunctionEx {
         Function<String, Integer> toInteger = Integer::valueOf;
         Function<String, String> backToString = toInteger.andThen(String::valueOf);
         backToString.apply("123");
-        Supplier<Person<Integer>> personSupplier = Person::new;
-        personSupplier.get();
+//        Supplier<Person<Integer>> personSupplier = Person::new;
+//        personSupplier.get();
         Consumer<Person<Integer>> greeter = (p) -> System.out.println(p.getBirthday().getTime());
         greeter.accept(new Person<Integer>() {
             @Override
@@ -116,8 +116,46 @@ class ConsumerFunc {
         Map<Integer, String> map = null;
         BiConsumer<Integer, String> biConsumer = (key, value) -> System.out.println("Key:" + key + "Value:" + value);
         map.forEach(biConsumer);
+        BiFunction<Integer, Integer, String> biFunction = (num1, num2) -> "Result:" + (num1 + num2);
+        System.out.println(biFunction.apply(10, 50));
     }
 }
+
+class Exercise {
+    public static void main(String[] args) {
+
+    }
+}
+
+@FunctionalInterface
+interface MyIn {
+    void f();
+
+    default int g() {
+        return 10;
+    }
+}
+
+class MyClass implements MyIn {
+    @Override
+    public void f() {
+        System.out.println("f ----> function");
+    }
+
+    @Override
+    public int g() {
+        return 20;
+    }
+}
+
+class Apple {
+    int size;
+
+    public Apple(int size) {
+        this.size = size;
+    }
+}
+
 
 
 
