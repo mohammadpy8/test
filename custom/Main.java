@@ -250,6 +250,22 @@ class Cars {
         boolean noneBlack = list.stream().noneMatch(car -> car.color.equals("b"));
     }
 }
+class Employ {
+    public static void main(String[] args) {
+        Set<String> set = new HashSet<>();
+        set.add("log:hello word");
+        set.add("log:ok");
+        set.add("log:warning");
+        set.add("log:fatal error");
+        set.add("hi!");
+        set.add("java");
+        set.add("streams are great !");
+        int SizeOfSet = set.size();
+        System.out.println(SizeOfSet);
+        Optional<Integer> sum = set.stream().map(String::length).reduce(Integer::sum);
+        sum.ifPresent(System.out::println);
+    }
+}
 
 
 
