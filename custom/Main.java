@@ -245,6 +245,9 @@ class Cars {
         sumOfPrice.ifPresent(System.out::println);
         List<Cars> newList = list.stream().filter(a -> a.price < 300).toList();
         Map<String, Cars> map = list.stream().collect(Collectors.toMap(car -> car.color, car -> car));
+        boolean anyBlack = list.stream().anyMatch(car -> car.color.equals("b"));
+        boolean allBack = list.stream().allMatch(car -> car.color.equals("b"));
+        boolean noneBlack = list.stream().noneMatch(car -> car.color.equals("b"));
     }
 }
 
