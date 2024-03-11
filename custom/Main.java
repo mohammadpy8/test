@@ -262,8 +262,14 @@ class Employ {
         set.add("streams are great !");
         int SizeOfSet = set.size();
         System.out.println(SizeOfSet);
-        Optional<Integer> sum = set.stream().map(String::length).reduce(Integer::sum);
-        sum.ifPresent(System.out::println);
+        Optional<Integer> sum = set.stream().parallel().map(String::length).reduce(Integer::sum);
+         sum.ifPresent(System.out::println);
+        Optional<Integer> sumationLog = set.stream().parallel().filter(s -> s.startsWith("log")).map(String::length).reduce(Integer::sum);
+        sumationLog.ifPresent(System.out::println);
+        Optional<Integer> sum2  =set.stream().parallel().filter(s -> s.startsWith("log")).sorted().map(String::length).reduce(Integer::sum);
+        sum2.ifPresent(System.out::println);
+        Optional<Integer> sum3 = set.stream().parallel().filter(s -> s.startsWith("a")).map(String::length).sorted().reduce(Integer::sum);
+        sum3.ifPresent(System.out::println);
     }
 }
 
