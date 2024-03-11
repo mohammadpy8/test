@@ -10,6 +10,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
 public class Main {
@@ -202,7 +203,8 @@ class Car {
                 new Car("p", 100),
                 new Car("n", 120)
         );
-        Stream<Car> newList = list.stream().filter((car) -> "p".equals(car.name)).sorted((a, b) -> a.price - b.price).limit(1);
+        Stream<Car> newList = list.stream().filter((car) -> "p".equals(car.name))
+                .sorted((a, b) -> a.price - b.price).limit(1);
         System.out.println(newList);
 
     }
@@ -245,17 +247,21 @@ class Cars {
         list.stream().forEach((car) -> System.out.println(car.price));
         System.out.println("-----");
         Stream<Cars> myCar = list.stream().filter((car -> car.price == 200));
-        list.stream().map(car -> car.color).filter(color -> color.startsWith("b")).forEach(System.out::println);
-        Optional<Integer> sumOfPrice = list.stream().map(car -> car.price).reduce(Integer::sum);
+        list.stream().map(car -> car.color).filter(color -> color.startsWith("b"))
+                .forEach(System.out::println);
+        Optional<Integer> sumOfPrice = list.stream().map(car -> car.price)
+                .reduce(Integer::sum);
         System.out.println("-----|-----");
         sumOfPrice.ifPresent(System.out::println);
         List<Cars> newList = list.stream().filter(a -> a.price < 300).toList();
-        Map<String, Cars> map = list.stream().collect(Collectors.toMap(car -> car.color, car -> car));
+        Map<String, Cars> map = list.stream()
+                .collect(Collectors.toMap(car -> car.color, car -> car));
         boolean anyBlack = list.stream().anyMatch(car -> car.color.equals("b"));
         boolean allBack = list.stream().allMatch(car -> car.color.equals("b"));
         boolean noneBlack = list.stream().noneMatch(car -> car.color.equals("b"));
     }
 }
+
 class Employ {
     public static void main(String[] args) {
         Set<String> set = new HashSet<>();
@@ -268,16 +274,25 @@ class Employ {
         set.add("streams are great !");
         int SizeOfSet = set.size();
         System.out.println(SizeOfSet);
-        Optional<Integer> sum = set.stream().parallel().map(String::length).reduce(Integer::sum);
+        Optional<Integer> sum = set.stream().parallel().
+                map(String::length).
+                reduce(Integer::sum);
         sum.ifPresent(System.out::println);
-        Optional<Integer> sumationLog = set.stream().parallel().filter(s -> s.startsWith("log")).map(String::length).reduce(Integer::sum);
+        Optional<Integer> sumationLog = set.stream().parallel().
+                filter(s -> s.startsWith("log"))
+                .map(String::length).reduce(Integer::sum);
         sumationLog.ifPresent(System.out::println);
-        Optional<Integer> sum2  =set.stream().parallel().filter(s -> s.startsWith("log")).sorted().map(String::length).reduce(Integer::sum);
+        Optional<Integer> sum2 = set.stream().
+                parallel().filter(s -> s.startsWith("log")).sorted().
+                map(String::length).reduce(Integer::sum);
         sum2.ifPresent(System.out::println);
-        Optional<Integer> sum3 = set.stream().parallel().filter(s -> s.startsWith("a")).map(String::length).sorted().reduce(Integer::sum);
+        Optional<Integer> sum3 = set.stream().parallel().
+                filter(s -> s.startsWith("a")).
+                map(String::length).sorted().reduce(Integer::sum);
         sum3.ifPresent(System.out::println);
     }
 }
+
 class LongStreamAndIntStream {
     public static void main(String[] args) throws Exception {
         IntStream oneTo19 = IntStream.range(1, 20);
@@ -288,8 +303,32 @@ class LongStreamAndIntStream {
                 .limit(10)
                 .forEach(System.out::println);
         Stream<String> stream = Stream.of("A", "B", "C");
-        String [] array  = {"Ali", "Mohammad"};
+        String[] array = {"Ali", "Mohammad"};
         Arrays.stream(array);
-        Stream<String> lines = Files.lines(Paths.get(""));
+        Stream<String> lines = Files.lines(Paths.get("")); ///set file name
+        IntStream.range(2, 100)
+                .filter(a -> IntStream.range(2, a - 1).noneMatch(x -> a % x == 0))
+                .forEach(System.out::println);
+    }
+}
+
+class Accumulator {
+    public static void main(String[] args) {
+        Accumulator accumulator = new Accumulator();
+        long answerAccumulator = accumulator.sideEffectParallelSum(200_000_000);
+        System.out.println(answerAccumulator);
+    }
+
+    long total = 0;
+
+    public void add(long value) {
+        total += value;
+    }
+
+    long sideEffectParallelSum(long n) {
+        Accumulator accumulator = new Accumulator();
+        LongStream.rangeClosed(1, n)
+                .parallel().forEach(accumulator::add);
+        return accumulator.total;
     }
 }
