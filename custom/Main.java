@@ -3,6 +3,7 @@ package custom;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
@@ -240,6 +241,10 @@ class Cars {
         Stream<Cars> myCar = list.stream().filter((car -> car.price == 200));
         list.stream().map(car -> car.color).filter(color -> color.startsWith("b")).forEach(System.out::println);
         Optional<Integer> sumOfPrice = list.stream().map(car -> car.price).reduce(Integer::sum);
+        System.out.println("-----|-----");
+        sumOfPrice.ifPresent(System.out::println);
+        List<Cars> newList = list.stream().filter(a -> a.price < 300).toList();
+        Map<String, Cars> map = list.stream().collect(Collectors.toMap(car -> car.color, car -> car));
     }
 }
 
